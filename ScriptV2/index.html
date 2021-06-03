@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <header>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Test</title>
+    </header>
+    <script  src="./script/data.js"></script>
+    <link rel="stylesheet" href="./Css/style.css">
+    <body>
+    
+        <div>
+            <div id="pageloader" class="pageloader">
+                <img src="./Css/ajax-loader.gif" alt="processing..." />
+             </div>
+             
+            <form id="myform" action="./Data/data.php" method="post" enctype = "multipart/form-data" onSubmit="load();">
+                <fieldset>
+                        <div class="source">
+                            <label>Source</label>
+                            <select id="source" name="source" onChange="check(this);">
+                                <option value="preset">Preset</option>
+                                <option value="gen">Generator</option>
+                                <option value="file">File</option>
+                                <option value="db">DB</option>
+                            </select>
+                                    
+                            
+                                    <br>
+
+                                <div id="file" class="file">
+                                    <label>Choose File</label>
+                                    <input type="file" name="csv" id="file"  >
+                                </div> 
+
+                                    <br>
+                                <div id="databaseSource" class="databaseSource">
+                                    <label>Choose Db</label>
+                                    <select  name="dbs" id="dbs" onchange="tabeleSelector('table','dbs')"></select>
+                                
+                                    <label>Choose Tabele</label>
+                                    <select  name="table" id="table"></select>
+                                </div>
+
+                        </div>
+                                <br>
+                                <br>
+                        <div>    
+                            <label>Destination</label>
+                            <select name="destinantion" id="destinantion" onChange="showDbDest(this);">
+                                <option value="toScreen">Screen</option>
+                                <option value="toFile">File</option>
+                                <option value="toDb">DB</option>
+                            </select>
+                            <br>
+
+                            
+                            <div id="databaseDest" class="databaseDest">
+                                <label>Choose Db</label>
+                                <select  name="dbd" id="dbd" onchange="tabeleSelector('tabled','dbd')"></select>
+                               
+
+                                <label>Choose Tabele</label>
+                                <select  name="tabled" id="tabled" ></select>
+                            </div>
+                        </div> 
+                            <br>
+                            <br>
+                  
+                        <div id="form" class="form">
+                                <input type="button" value="Random" onclick="change()"><br>
+                               
+                                    <label>Name:*</label><input type="text" id="namee" name="name" ><br>
+                
+                                    <label>Avrage:*</label><input type="number" id="avrage" name="avrage" ><br>
+                
+                                    <label>Variation:*</label><input type="number" id="variation" name="variation" ><br>
+                
+                                    <label>Unit Of measurments:*</label><input type="text" id="unit" name="unit" ><br>
+                
+                                    <label>Starting Date:*</label><input type="date" id="sdate" name="sdate" >
+                                    <!--<label>Starting time:</label><input type="time" id="stime" name="stime" step="2">--><br>
+                                    
+                                    <label>Ending Date:*</label><input type="date" id="edate" name="edate" >
+                                    <!--<label>Ending Time:</label><input type="time" id="etime" name="etime" step="2">--><br>
+                
+                                    <label>Type:*</label>
+                                    <select id="type" name ="type" >
+                                        <option  value="crescente">Crescente</option>
+                                        <option  value="lineare">Lineare</option>
+                                        <option  value="calante">Calanete</option>
+                                        <option  value="custom">Custom</option>
+                                    </select><br>
+                
+                                    <label>Time Sample:*</label>
+                                    <select id="sample" name="sample" >
+                                        <option value="PT1S|ogni secondo|s">Ogni Seconod</option>
+                                        <option value="PT1M|ogni minuto|m">Ogni Minuto</option>
+                                        <option value="PT1H|ogni ora|o">Ogni Ora</option>
+                                        <option value="P1D|ogni giorno|G">Ogni Giorno</option>
+                                        <!--<option value="PT1S|ogni minuti|s">Ogni Settimana</option>-->
+                                        <option value="P1M|ogni mese|M">Ogni Mese</option>
+                                        <option value="P1Y|ogni anno|Y">Ogni Anno</option>
+                                    </select><br>
+                        </div>
+
+
+
+                        <div class="preset">
+                            <label>Save To Preset Named</label>
+                            <input type="checkbox" id="preset" value="true">
+
+                        </div>
+                    <input id="myBtn" type="submit" value="Submit">
+                </fieldset>
+               
+            </form>
+            <input type="button" name="home" value="Add Database" onClick="document.location.href='./Data/addDb.php'"/><br>
+        </div>
+
+    
+    </body>
+</html>
